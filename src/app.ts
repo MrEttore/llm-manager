@@ -1,0 +1,32 @@
+import type { Request, Response } from 'express';
+import express from 'express';
+import morgan from 'morgan';
+
+import { corsBasic, corsPreflight } from '@/config/cors.js';
+import { ENV } from '@/config/env.js';
+import { globalErrorHandler } from '@/middlewares/globalErrorHandler.js';
+import { notFoundHandler } from '@/middlewares/notFoundHandler.js';
+import { openaiRouter } from '@/routes/openaiRoutes.js';
+
+export const app = express();
+
+// Middlewares
+
+app.use(corsBasic);
+app.options('*', corsPreflight);
+
+if (ENV.nodeEnv === 'development') app.use(morgan('dev'));
+if (ENV.nodeEnv === 'production') app.use(morgan('combined'));
+
+app.use(express.json());
+
+// Mount routes
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('⚡️ Llm manager is running');
+});
+
+app.use('/api/v1/openai', openaiRouter);
+
+app.all('*', notFoundHandler);
+app.use(globalErrorHandler);
