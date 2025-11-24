@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="Logo" width="200" draggable="false"/>
+  <img src="assets/logo.svg" alt="Logo" width="300" draggable="false"/>
 </p>
 
 # llm-manager <!-- omit in toc -->
