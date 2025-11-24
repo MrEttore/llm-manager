@@ -1,10 +1,10 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-  <rect width="256" height="256" fill="#0F1625" />
+  <rect width="256" height="256" fill="none" />
   <path
     d="M156 24L84 148H134L96 232L172 112H122L156 24Z"
-    fill="#FF7A18"
-    stroke="#f5a56c"
-    stroke-width="8"
+    fill="#FFC107"
+    stroke="#82181a"
+    stroke-width="3"
     stroke-linejoin="round"
   />
 </svg>
