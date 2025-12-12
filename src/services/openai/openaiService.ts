@@ -27,6 +27,7 @@ export class OpenAIService {
       const chatCompletion: ChatCompletion = { role: completion?.role ?? 'assistant', content: completion?.content ?? null };
       return chatCompletion;
     } catch (error) {
+      console.error('Error in chat:', error);
       // TODO: Handle provider‑specific errors
       throw error;
     }
@@ -59,6 +60,42 @@ export class OpenAIService {
       }
     } catch (error) {
       console.error('Error in streamChat:', error);
+      // TODO: Handle provider‑specific errors
+      throw error;
+    }
+  }
+
+  async image(
+    prompt: string,
+    model?: string,
+    n?: number,
+    quality?: 'auto' | 'low' | 'medium' | 'high',
+    size?: '1024x1024' | '1536x1024' | '1024x1536',
+  ) {
+    try {
+      const result = await this.client.images.generate({
+        prompt,
+        model: model ?? 'gpt-image-1',
+        n: n ?? 1,
+        quality: quality ?? 'auto',
+        size: size ?? '1024x1024',
+      });
+
+      const image_base64 = result?.data?.[0]?.b64_json ?? null;
+      const dataUrl = `data:image/png;base64,${image_base64}`;
+      const meta = {
+        created: result.created,
+        size: result.size,
+        quality: result.quality,
+        outputFormat: result.output_format ?? 'png',
+      };
+
+      return {
+        dataUrl,
+        meta,
+      };
+    } catch (error) {
+      console.error('The OpenAIService had an error generating the image: ', error);
       // TODO: Handle provider‑specific errors
       throw error;
     }
