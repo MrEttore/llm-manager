@@ -20,5 +20,5 @@ export interface ChatCompletionChunk {
   content: string | null;
 }
 
-export type ChatCompletionRequest = Request<{}, ChatCompletion, ChatRequestBody>;
+export type ChatCompletionRequest = Request<Record<string, never>, ChatCompletion, ChatRequestBody>;
 export type ChatCompletionResponse = Response<ChatCompletion>;
