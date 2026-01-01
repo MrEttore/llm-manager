@@ -1,4 +1,4 @@
-import { AppError } from '@/errors/AppError.js';
+import { AppError } from '@/shared/errors/AppError.js';
 
 export class ProviderError extends AppError {
   constructor(message: string, statusCode = 503) {

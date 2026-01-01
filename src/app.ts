@@ -4,9 +4,9 @@ import morgan from 'morgan';
 
 import { corsBasic, corsPreflight } from '@/config/cors.js';
 import { ENV } from '@/config/env.js';
-import { globalErrorHandler } from '@/middlewares/globalErrorHandler.js';
-import { notFoundHandler } from '@/middlewares/notFoundHandler.js';
-import { openaiRouter } from '@/routes/openaiRoutes.js';
+import { openaiRouter } from '@/features/openai/openaiRouter.js';
+import { globalErrorHandler } from '@/shared/middlewares/globalErrorHandler.js';
+import { notFoundHandler } from '@/shared/middlewares/notFoundHandler.js';
 
 export const app = express();
 

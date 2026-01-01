@@ -18,6 +18,8 @@ export default tseslint.config(
       'simple-import-sort/imports': 'warn',
       'simple-import-sort/exports': 'warn',
       '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false }],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
 );
